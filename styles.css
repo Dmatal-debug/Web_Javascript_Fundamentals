@@ -1,0 +1,30 @@
+body{
+    background-color: #f0f0f0;
+}
+
+h1{
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+p{
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#name-label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#mail-label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#message-label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
