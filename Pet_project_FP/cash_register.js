@@ -1,11 +1,11 @@
 
 function checkCashRegister(price, cash, cid) {
   let change;
-  let changeDue = cash - price;
+  let changeDue = Math.round((cash - price) * 100);
   let cidTotal = 0;
 
   for (let i = 0; i < cid.length; i++) {
-    cidTotal += cid[i][1];
+    cidTotal += Math.round(cid[i][1] * 100);
   }
 
   if (cidTotal < changeDue){
@@ -18,15 +18,15 @@ function checkCashRegister(price, cash, cid) {
 
   else {
     const denominations = [
-      ["ONE HUNDRED", 100],
-      ["TWENTY", 20],
-      ["TEN", 10],
-      ["FIVE", 5],
-      ["ONE", 1],
-      ["QUARTER", 0.25],
-      ["DIME", 0.10],
-      ["NICKEL", 0.05],
-      ["PENNY", 0.01]
+      ["ONE HUNDRED", 10000],
+      ["TWENTY", 2000],
+      ["TEN", 1000],
+      ["FIVE", 500],
+      ["ONE", 100],
+      ["QUARTER", 25],
+      ["DIME", 10],
+      ["NICKEL", 5],
+      ["PENNY", 1]
     ];
 
     let change = [];
@@ -35,7 +35,7 @@ function checkCashRegister(price, cash, cid) {
       let name = denominations[i][0];
       let unitValue = denominations[i][1];
 
-      let available = cid[cid.length - 1 - i][1];
+      let available = Math.round(cid[cid.length - 1 - i][1] * 100);
       let amountUsed = 0;
 
       while (changeDue >= unitValue && available > 0) {
@@ -45,7 +45,7 @@ function checkCashRegister(price, cash, cid) {
       }
 
       if (amountUsed > 0) {
-        change.push([name, amountUsed]);
+        change.push([name, amountUsed / 100]);
       }
     }
 
